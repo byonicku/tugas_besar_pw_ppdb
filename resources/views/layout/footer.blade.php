@@ -14,10 +14,10 @@
 
     footer {
         background-color: #0c84a4;
-        z-index: 1;
-        bottom:0;
-        width:100%;
-        position:static;
+        width: 100%;
+        bottom: 0;
+        position: relative;
+        clear: both;
     }
 
     .footer-logo-shield {
