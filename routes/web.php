@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('home', ['state' => false]);
 });
 
+Route::get('/home', function () {
+    return view('home', ['state' => false]);
+});
+
 Route::get('/login', function () {
     return view('home', ['state' => true]);
 });
@@ -48,4 +52,9 @@ Route::get('/berkas_ortu3', function () {
 
 Route::get('/success', function () {
     return view('success_page', ['state' => true]);
+});
+
+
+Route::get('/jurusan', function () {
+    return view('jurusan', ['state' => false]);
 });

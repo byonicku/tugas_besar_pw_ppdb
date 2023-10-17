@@ -9,10 +9,10 @@
         @if (!$state)
             <!-- guest -->
             <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="{{ url('home') }}">Home</a>
             </li>
             <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Jurusan</a>
+                <a class="nav-link" href="{{ url('jurusan') }}">Jurusan</a>
             </li>
             <li class="nav-item mx-2">
                 <a class="nav-link" href="#">Biaya</a>
