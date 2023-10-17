@@ -25,7 +25,7 @@
     <div class="row mt-2 mb-5">
             <div class="card w-100">
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ url('berkas_ortu1') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 border-end">

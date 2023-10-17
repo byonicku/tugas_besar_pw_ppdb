@@ -6,7 +6,7 @@
     </div>
 
     <ul class="nav nav-pills align-content-center mx-5">
-        @if (1)
+        @if (!$state)
             <!-- guest -->
             <li class="nav-item mx-2">
                 <a class="nav-link" href="#">Home</a>
@@ -17,7 +17,22 @@
             <li class="nav-item mx-2">
                 <a class="nav-link" href="#">Biaya</a>
             </li>
-        @elseif (0)
+        @elseif ($state)
+            <!-- user -->
+            <li class="nav-item mx-2">
+                <a class="nav-link" href="#">Profile</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a class="nav-link" href="{{ url('pembayaran') }}">Pembayaran</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a class="nav-link" href="{{ url('berkas') }}">Berkas</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a class="nav-link" href="#">Status</a>
+            </li>
+        @else
+
             <!-- admin -->
             <li class="nav-item mx-2">
                 <a class="nav-link" href="#">Data Pengguna</a>
@@ -25,30 +40,16 @@
             <li class="nav-item mx-2">
                 <a class="nav-link" href="#">Kelola Pengguna</a>
             </li>
-        @else
-            <!-- user -->
-            <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Profile</a>
-            </li>
-            <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Pembayaran</a>
-            </li>
-            <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Berkas</a>
-            </li>
-            <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Status</a>
-            </li>
         @endif
 
         <div class="mx-2 my-0 py-1">
-        @if (1) <!-- todo! change condition -->
-            <a href="#" class="btn btn-primary rounded-pill align-content-center border-0"
+        @if (!$state) <!-- todo! change condition -->
+            <a href="{{ url('login') }}" class="btn btn-primary rounded-pill align-content-center border-0"
             style="background-color: #ffd6a4; color: black; font-size: 24px; font-weight: 500;">
                 <p class="mx-4 my-0">Login</p>
             </a>
         @else
-            <a href="#" class="btn btn-primary rounded-pill align-content-center border-0"
+            <a href="{{ url('logout') }}" class="btn btn-primary rounded-pill align-content-center border-0"
             style="background-color: #FFA4A4; color: white; font-size: 24px; font-weight: 500;">
                 <p class="mx-4 my-0">Logout</p>
             </a>

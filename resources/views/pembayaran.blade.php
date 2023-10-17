@@ -30,7 +30,6 @@
     }
 </style>
 
-
 <div class="container mb-3">
     <div class="card">
         <div class="card-header">
@@ -56,7 +55,7 @@
                         <td>2023-10-01</td>
                         <td>2023-10-31</td>
                         <td>Rp 500.00</td>
-                        <td><button class="btn btn-primary bayar-btn">Bayar</button></td>
+                        <td><button class="btn btn-primary bayar-btn" data-bs-toggle="modal" data-bs-target="#detail">Bayar</button></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
@@ -64,7 +63,7 @@
                         <td>2023-11-01</td>
                         <td>2023-11-30</td>
                         <td>Rp 600.00</td>
-                        <td><button class="btn btn-primary bayar-btn">Bayar</button></td>
+                        <td><button class="btn btn-primary bayar-btn" data-bs-toggle="modal" data-bs-target="#detail">Bayar</button></td>
                     </tr>
                     <!-- Add more rows as needed -->
                 </tbody>
@@ -109,6 +108,45 @@
                     <!-- Add more rows as needed -->
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="detail" aria-labelledby="detailLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bayarModalLabel">Form Pembayaran</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="nama_rekening">Nama Rekening Pengirim</label>
+                        <input type="text" class="form-control" id="nama_rekening" placeholder="Nama Rekening Pengirim">
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal_bayar">Tanggal Bayar</label>
+                        <input type="date" class="form-control" id="tanggal_bayar">
+                    </div>
+                    <div class="form-group">
+                        <label for="metode_pembayaran">Metode Pembayaran</label>
+                        <select class="form-control" id="metode_pembayaran">
+                            <option hidden selected disabled>Metode Pembayaran</option>
+                            <option>Transfer Bank</option>
+                            <option>Kartu Kredit</option>
+                            <option>Virtual Account</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bukti_pembayaran">Upload Bukti Pembayaran</label>
+                        <input type="file" class="form-control" id="bukti_pembayaran">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-start">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Kirim</button>
+            </div>
         </div>
     </div>
 </div>

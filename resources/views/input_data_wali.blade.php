@@ -25,7 +25,7 @@
     <div class="row mt-2 mb-5">
             <div class="card w-100">
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ url('success') }}" method="">
                         @csrf
                         <div class="row">
                             <h5>Wali</h5>
