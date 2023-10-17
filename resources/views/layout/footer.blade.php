@@ -12,10 +12,21 @@
         color: white;
     }
 
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh; /* Make sure the body takes up at least the viewport height */
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        flex-grow: 1; /* Allow the main content to grow and push the footer to the bottom */
+    }
+
     footer {
         background-color: #0c84a4;
         width: 100%;
-        bottom: 0;
         position: relative;
         clear: both;
     }
