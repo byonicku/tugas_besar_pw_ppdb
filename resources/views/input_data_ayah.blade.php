@@ -35,16 +35,16 @@
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="birthplace" class="form-label">Tempat Lahir</label>
-                                    <input type="text" class="form-control" id="birthplace" name="birthplace" placeholder="Tempat Lahir" required>
+                                    <label for="tempatlahir" class="form-label">Tempat Lahir</label>
+                                    <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Tempat Lahir" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="religion" class="form-label">Agama</label>
-                                    <input type="text" class="form-control" id="religion" name="religion" placeholder="Agama" required>
+                                    <label for="agama" class="form-label">Agama</label>
+                                    <input type="text" class="form-control" id="agama" name="agama" placeholder="Agama" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="address" class="form-label">Alamat</label>
-                                    <textarea class="form-control" id="address" name="address" rows="3" placeholder="Alamat" required></textarea>
+                                    <label for="agama" class="form-label">Alamat</label>
+                                    <textarea class="form-control" id="agama" name="agama" rows="3" placeholder="Alamat" required></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -61,8 +61,8 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="province" class="form-label">Provinsi</label>
-                                        <input type="text" class="form-control" id="province" name="province" placeholder="Provinsi" required>
+                                        <label for="provinsi" class="form-label">Provinsi</label>
+                                        <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="Provinsi" required>
                                     </div>
                                 </div>
 
@@ -70,14 +70,14 @@
                                 <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="city" class="form-label">Kabupaten/Kota</label>
-                                                <input type="text" class="form-control" id="city" name="city" placeholder="Kabupaten/Kota" required>
+                                                <label for="kota" class="form-label">Kabupaten/Kota</label>
+                                                <input type="text" class="form-control" id="kota" name="kota" placeholder="Kabupaten/Kota" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="district" class="form-label">Kecamatan</label>
-                                                <input type="text" class="form-control" id="district" name="district" placeholder="Kecamatan" required>
+                                                <label for="kecamatan" class="form-label">Kecamatan</label>
+                                                <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="Kecamatan" required>
                                             </div>
                                         </div>
                                 </div>
@@ -85,14 +85,14 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="subdistrict" class="form-label">Kelurahan/Desa</label>
-                                            <input type="text" class="form-control" id="subdistrict" name="subdistrict" placeholder="Kelurahan/Desa" required>
+                                            <label for="kelurahan" class="form-label">Kelurahan/Desa</label>
+                                            <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="Kelurahan/Desa" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="postal_code" class="form-label">Kode Pos</label>
-                                            <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="Kode Pos" required>
+                                            <label for="kode_pos" class="form-label">Kode Pos</label>
+                                            <input type="text" class="form-control" id="kode_pos" name="postal_code" placeholder="Kode Pos" required>
                                         </div>
                                     </div>
                                 </div>
