@@ -1,5 +1,5 @@
 <style>
-    h3 {
+    .footer-title {
         color: white;
         text-shadow: 1px 1px black;
         font-size: 24px;
@@ -44,11 +44,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mt-4">
-                <h3>About</h3>
+                <h3 class="footer-title">About</h3>
                 <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam eu bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien. Sed euismod, diam eu bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien.</p>
             </div>
             <div class="col-md-4 mt-4">
-                <h3>Contact</h3>
+                <h3 class="footer-title">Contact</h3>
                 <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam eu bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien. Sed euismod, diam eu bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien.</p>
             </div>
             <div class="col-md-4 mb-2 mt-0">

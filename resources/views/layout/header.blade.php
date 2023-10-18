@@ -1,12 +1,12 @@
 <nav class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom" style="background-color: #0c84a4" >
     <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <div style="background-color: white; margin: 0px 5rem 0px 5rem;" class="rounded px-1 py-1">
-            <a class="navbar-brand" href="#" ><img src="{{ asset('images/logo_full.png') }}" width="250px"></a>
+            <a class="navbar-brand" href="{{ url('home') }}" ><img src="{{ asset('images/logo_full.png') }}" width="250px"></a>
         </div>
     </div>
 
     <ul class="nav nav-pills align-content-center mx-5">
-        @if (!$state)
+        @if ($state == 0)
             <!-- guest -->
             <li class="nav-item mx-2">
                 <a class="nav-link" href="{{ url('home') }}">Home</a>
@@ -17,10 +17,10 @@
             <li class="nav-item mx-2">
                 <a class="nav-link" href="#">Biaya</a>
             </li>
-        @elseif ($state)
+        @elseif ($state == 1)
             <!-- user -->
             <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="{{ url('profile') }}">Profile</a>
             </li>
             <li class="nav-item mx-2">
                 <a class="nav-link" href="{{ url('pembayaran') }}">Pembayaran</a>
@@ -32,7 +32,6 @@
                 <a class="nav-link" href="#">Status</a>
             </li>
         @else
-
             <!-- admin -->
             <li class="nav-item mx-2">
                 <a class="nav-link" href="#">Data Pengguna</a>

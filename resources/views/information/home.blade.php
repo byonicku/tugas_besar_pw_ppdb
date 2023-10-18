@@ -13,6 +13,11 @@
 </style>
 
 <div class="container d-flex flex-column align-items-center text-center my-5">
+    @if ($state == 2)
+    <h2>
+        Welcome Admin!
+    </h2>
+    @else
     <h2>
         Welcome to SMA Atma Budika!
     </h2>
@@ -50,5 +55,6 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 @endsection

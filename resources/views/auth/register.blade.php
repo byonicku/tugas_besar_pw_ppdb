@@ -48,7 +48,8 @@
         <div class="col-md-6" style="padding-top: 72px; padding-bottom: 40px">
             <div class="d-flex flex-column py-5">
                 <h1 class="py-5 align-self-center">Register</h1>
-                <form action="{{ url('home') }}">
+                <form action="{{ url('register') }}" method="POST">
+                    @csrf
                     <div class="mb-3 pt-3 w-50 mx-auto">
                         <label for="nama">Nama Lengkap (Sesuai Akte)</label>
                         <input type="text" class="form-control py-2" id="nama" name="nama" placeholder="Nama Lengkap" required>

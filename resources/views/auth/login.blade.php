@@ -48,7 +48,13 @@
         <div class="col-md-6" style="padding-top: 72px; padding-bottom: 40px">
             <div class="d-flex flex-column py-5">
                 <h1 class="py-5 align-self-center">Sign In</h1>
-                <form action="{{ url('home') }}">
+                @if($error)
+                <div class="alert alert-warning align-self-center" role="alert">
+                    {{ $error }}
+                </div>
+                @endif
+                <form action="{{ url('login') }}" method="POST">
+                    @csrf
                     <div class="mb-3 pt-5 w-50 mx-auto">
                         <input type="text" class="form-control py-2" id="username" name="username" placeholder="Username" required>
                     </div>

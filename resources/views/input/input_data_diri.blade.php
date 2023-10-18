@@ -66,6 +66,10 @@
                                 </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
+                                    <label for="no_telp" class="form-label">Nomor Telepon</label>
+                                    <input type="number" class="form-control" id="no_telp" name="no_telp" placeholder="Nomor Telepon" required>
+                                </div>
+                                <div class="mb-3">
                                     <label for="provinsi" class="form-label">Provinsi</label>
                                     <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="Provinsi" required>
                                 </div>
