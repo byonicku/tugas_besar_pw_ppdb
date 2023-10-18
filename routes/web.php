@@ -17,78 +17,81 @@ $user = [
     'username' => '',
     'password' => '',
     'registered' => false,
-    'wali' => false,
+    'wali_picked' => false,
     'no_regis' => 0,
     'diri' => [
-        'name' => 'Placeholder',
-        'email' => 'Placeholder',
-        'tanggallahir' => 'Placeholder',
-        'tempatlahir' => 'Placeholder',
-        'agama' => 'Placeholder',
-        'alamat' => 'Placeholder',
-        'rt' => 'Placeholder',
-        'rw' => 'Placeholder',
-        'no_telp' => 'Placeholder',
-        'provinsi' => 'Placeholder',
-        'kota' => 'Placeholder',
-        'kecamatan' => 'Placeholder',
-        'kelurahan' => 'Placeholder',
-        'kode_pos' => 'Placeholder',
-        'asal_smp' => 'Placeholder',
+        'name' => '',
+        'email' => '',
+        'tanggallahir' => '',
+        'tempatlahir' => '',
+        'agama' => '',
+        'alamat' => '',
+        'rt' => '',
+        'rw' => '',
+        'no_telp' => '',
+        'provinsi' => '',
+        'kota' => '',
+        'kecamatan' => '',
+        'kelurahan' => '',
+        'kode_pos' => '',
+        'asal_smp' => '',
+        'jurusan' => '',
+        'foto' => '',
+        'foto_dir' => '',
     ],
     'ayah' => [
-        'name' => 'Placeholder',
-        'email' => 'Placeholder',
-        'tempatlahir' => 'Placeholder',
-        'agama' => 'Placeholder',
-        'alamat' => 'Placeholder',
-        'rt' => 'Placeholder',
-        'rw' => 'Placeholder',
-        'no_telp' => 'Placeholder',
-        'provinsi' => 'Placeholder',
-        'kota' => 'Placeholder',
-        'kecamatan' => 'Placeholder',
-        'kelurahan' => 'Placeholder',
-        'kode_pos' => 'Placeholder',
-        'pekerjaan' => 'Placeholder',
-        'pendidikan_terakhir' => 'Placeholder',
-        'penghasilan' => 'Placeholder',
+        'name' => '',
+        'email' => '',
+        'tempatlahir' => '',
+        'agama' => '',
+        'alamat' => '',
+        'rt' => '',
+        'rw' => '',
+        'no_telp' => '',
+        'provinsi' => '',
+        'kota' => '',
+        'kecamatan' => '',
+        'kelurahan' => '',
+        'kode_pos' => '',
+        'pekerjaan' => '',
+        'pendidikan_terakhir' => '',
+        'penghasilan' => '',
     ],
     'ibu' => [
-        'name' => 'Placeholder',
-        'email' => 'Placeholder',
-        'tempatlahir' => 'Placeholder',
-        'agama' => 'Placeholder',
-        'alamat' => 'Placeholder',
-        'rt' => 'Placeholder',
-        'rw' => 'Placeholder',
-        'no_telp' => 'Placeholder',
-        'provinsi' => 'Placeholder',
-        'kota' => 'Placeholder',
-        'kecamatan' => 'Placeholder',
-        'kelurahan' => 'Placeholder',
-        'kode_pos' => 'Placeholder',
-        'pekerjaan' => 'Placeholder',
-        'pendidikan_terakhir' => 'Placeholder',
-        'penghasilan' => 'Placeholder',
+        'name' => '',
+        'email' => '',
+        'tempatlahir' => '',
+        'agama' => '',
+        'alamat' => '',
+        'rt' => '',
+        'rw' => '',
+        'no_telp' => '',
+        'provinsi' => '',
+        'kota' => '',
+        'kecamatan' => '',
+        'kelurahan' => '',
+        'kode_pos' => '',
+        'pekerjaan' => '',
+        'pendidikan_terakhir' => '',
+        'penghasilan' => '',
     ],
     'wali' => [
-        'name' => 'Placeholder',
-        'email' => 'Placeholder',
-        'tempatlahir' => 'Placeholder',
-        'agama' => 'Placeholder',
-        'alamat' => 'Placeholder',
-        'rt' => 'Placeholder',
-        'rw' => 'Placeholder',
-        'no_telp' => 'Placeholder',
-        'provinsi' => 'Placeholder',
-        'kota' => 'Placeholder',
-        'kecamatan' => 'Placeholder',
-        'kelurahan' => 'Placeholder',
-        'kode_pos' => 'Placeholder',
-        'pekerjaan' => 'Placeholder',
-        'pendidikan_terakhir' => 'Placeholder',
-        'penghasilan' => 'Placeholder',
+        'name' => '',
+        'email' => '',
+        'tempatlahir' => '',
+        'agama' => '',
+        'alamat' => '',
+        'rt' => '',
+        'rw' => '',
+        'no_telp' => '',
+        'provinsi' => '',
+        'kota' => '',
+        'kecamatan' => '',
+        'kelurahan' => '',
+        'kode_pos' => '',
+        'pekerjaan' => '',
+        'pendidikan_terakhir' => '',
+        'penghasilan' => '',
     ],
 ];
 
@@ -112,7 +115,10 @@ Route::get('/', function () {
 
 Route::get('/profile', function () use ($user) {
     $loggedIn = session('loggedIn', 0);
-    return view('/information/profile', ['user' => session('user'), 'state' => $loggedIn, 'wali' => false]);
+    return view('/information/profile',
+    ['user' => session('user'),
+    'state' => $loggedIn,
+    'wali' => $user['wali_picked'],]);
 });
 
 Route::get('/home', function () {
@@ -154,11 +160,18 @@ Route::post('/register', function () use (&$user) {
         $user['username'] = $_POST['username'];
         $user['password'] = $_POST['password'];
         session(['loggedIn' => 0, 'user' => $user]);
-        return redirect('/home');
+        return redirect('/login');
     }
 });
 
 Route::get('/logout', function () {
+    if (session('user')['registered']) {
+        $photoPath = public_path(session('user')['diri']['foto']);
+        if (file_exists($photoPath)) {
+            unlink($photoPath);
+        }
+    }
+
     session()->forget('loggedIn');
     session()->forget('user');
     return redirect('/home');
@@ -166,12 +179,75 @@ Route::get('/logout', function () {
 
 Route::get('/pembayaran', function () {
     $loggedIn = session('loggedIn', 0);
+    if (!session('loggedIn', 1)) {
+        return redirect('/');
+    }
     return view('/transaction/pembayaran', ['state' => $loggedIn]);
 });
 
 Route::get('/berkas', function () {
     $loggedIn = session('loggedIn', 0);
+    if (!session('loggedIn', 1)) {
+        return redirect('/');
+    }
+    if (session('user')['registered']) {
+        return redirect('/success_already');
+    }
     return view('/input/input_data_diri', ['state' => $loggedIn]);
+});
+
+Route::post('/berkas', function () use (&$user) {
+    $userData = session('user', []);
+    // Update the 'diri' data in the $user array with the submitted form data
+    $userData['diri']['name'] = $_POST['name'];
+    $userData['diri']['tempatlahir'] = $_POST['tempatlahir'];
+    $userData['diri']['tanggallahir'] = $_POST['tanggallahir'];
+    $userData['diri']['jenis_kelamin'] = $_POST['jenis_kelamin'];
+    $userData['diri']['alamat'] = $_POST['alamat'];
+    $userData['diri']['agama'] = $_POST['agama'];
+    $userData['diri']['rt'] = $_POST['rt'];
+    $userData['diri']['rw'] = $_POST['rw'];
+    $userData['diri']['no_telp'] = $_POST['no_telp'];
+    $userData['diri']['provinsi'] = $_POST['provinsi'];
+    $userData['diri']['kota'] = $_POST['kota'];
+    $userData['diri']['kecamatan'] = $_POST['kecamatan'];
+    $userData['diri']['kelurahan'] = $_POST['kelurahan'];
+    $userData['diri']['kode_pos'] = $_POST['kode_pos'];
+    $userData['diri']['asal_smp'] = $_POST['asal_smp'];
+    $userData['diri']['jurusan'] = $_POST['jurusan'];
+
+    $pasFoto = $_FILES['foto'];
+    if (isset($pasFoto)) {
+        $tmpFile = $pasFoto['tmp_name'];
+        $folderTujuan = "../public/images/";
+        $directory = "images/";
+        $namaFile = $pasFoto['name'];
+
+        $move = $folderTujuan . $namaFile;
+        $userData['diri']['foto'] = $directory . $namaFile;
+        $userData['diri']['foto_dir'] = $folderTujuan . $namaFile;
+
+        if (!move_uploaded_file($tmpFile, $move)) {
+            die("Upload gagal!");
+        }
+    } else {
+        die("No file uploaded.");
+    }
+
+    $which = $_POST['choose'];
+    if ($which == 'wali') {
+        $userData['diri']['wali'] = true;
+    }
+
+    session(['loggedIn' => 1, 'user' => $userData]);
+
+    if ($which == 'Wali') {
+        return redirect('/berkas_ortu3');
+    } else if ($which == 'Ayah') {
+        return redirect('/berkas_ortu1');
+    } else if ($which == 'Ibu') {
+        return redirect('/berkas_ortu2');
+    }
 });
 
 Route::get('/berkas_ortu1', function () {
@@ -180,24 +256,27 @@ Route::get('/berkas_ortu1', function () {
 });
 
 Route::post('/berkas_ortu1', function () {
+    $userData = session('user', []);
     // Update the 'ayah' data in the $user array with the submitted form data
-    $user['ayah']['name'] = $_POST['name'];
-    $user['ayah']['tempatlahir'] = $_POST['tempatlahir'];
-    $user['ayah']['agama'] = $_POST['agama'];
-    $user['ayah']['alamat'] = $_POST['alamat'];
-    $user['ayah']['rt'] = $_POST['rt'];
-    $user['ayah']['rw'] = $_POST['rw'];
-    $user['ayah']['no_telp'] = $_POST['no_telp'];
-    $user['ayah']['provinsi'] = $_POST['provinsi'];
-    $user['ayah']['kota'] = $_POST['kota'];
-    $user['ayah']['kecamatan'] = $_POST['kecamatan'];
-    $user['ayah']['kelurahan'] = $_POST['kelurahan'];
-    $user['ayah']['kode_pos'] = $_POST['kode_pos'];
-    $user['ayah']['pekerjaan'] = $_POST['pekerjaan'];
-    $user['ayah']['pendidikan_terakhir'] = $_POST['pendidikan_terakhir'];
-    $user['ayah']['penghasilan'] = $_POST['penghasilan'];
-    session(['loggedIn' => 1, 'user' => $user]);
-    return redirect('/berkas_ortu2');
+    $userData['ayah']['name'] = $_POST['name'];
+    $userData['ayah']['tempatlahir'] = $_POST['tempatlahir'];
+    $userData['ayah']['agama'] = $_POST['agama'];
+    $userData['ayah']['alamat'] = $_POST['alamat'];
+    $userData['ayah']['rt'] = $_POST['rt'];
+    $userData['ayah']['rw'] = $_POST['rw'];
+    $userData['ayah']['no_telp'] = $_POST['no_telp'];
+    $userData['ayah']['provinsi'] = $_POST['provinsi'];
+    $userData['ayah']['kota'] = $_POST['kota'];
+    $userData['ayah']['kecamatan'] = $_POST['kecamatan'];
+    $userData['ayah']['kelurahan'] = $_POST['kelurahan'];
+    $userData['ayah']['kode_pos'] = $_POST['kode_pos'];
+    $userData['ayah']['pekerjaan'] = $_POST['pekerjaan'];
+    $userData['ayah']['pendidikan_terakhir'] = $_POST['pendidikan_terakhir'];
+    $userData['ayah']['penghasilan'] = $_POST['penghasilan'];
+
+    $userData['registered'] = true;
+    session(['loggedIn' => 1, 'user' => $userData]);
+    return redirect('/success');
 });
 
 Route::get('/berkas_ortu2', function () {
@@ -206,24 +285,26 @@ Route::get('/berkas_ortu2', function () {
 });
 
 Route::post('/berkas_ortu2', function () {
+    $userData = session('user', []);
     // Update the 'ibu' data in the $user array with the submitted form data
-    $user['ibu']['name'] = $_POST['name'];
-    $user['ibu']['tempatlahir'] = $_POST['tempatlahir'];
-    $user['ibu']['agama'] = $_POST['agama'];
-    $user['ibu']['alamat'] = $_POST['alamat'];
-    $user['ibu']['rt'] = $_POST['rt'];
-    $user['ibu']['rw'] = $_POST['rw'];
-    $user['ibu']['no_telp'] = $_POST['no_telp'];
-    $user['ibu']['provinsi'] = $_POST['provinsi'];
-    $user['ibu']['kota'] = $_POST['kota'];
-    $user['ibu']['kecamatan'] = $_POST['kecamatan'];
-    $user['ibu']['kelurahan'] = $_POST['kelurahan'];
-    $user['ibu']['kode_pos'] = $_POST['kode_pos'];
-    $user['ibu']['pekerjaan'] = $_POST['pekerjaan'];
-    $user['ibu']['pendidikan_terakhir'] = $_POST['pendidikan_terakhir'];
-    $user['ibu']['penghasilan'] = $_POST['penghasilan'];
-    $user['registered'] = true;
-    session(['loggedIn' => 1, 'user' => $user]);
+    $userData['ibu']['name'] = $_POST['name'];
+    $userData['ibu']['tempatlahir'] = $_POST['tempatlahir'];
+    $userData['ibu']['agama'] = $_POST['agama'];
+    $userData['ibu']['alamat'] = $_POST['alamat'];
+    $userData['ibu']['rt'] = $_POST['rt'];
+    $userData['ibu']['rw'] = $_POST['rw'];
+    $userData['ibu']['no_telp'] = $_POST['no_telp'];
+    $userData['ibu']['provinsi'] = $_POST['provinsi'];
+    $userData['ibu']['kota'] = $_POST['kota'];
+    $userData['ibu']['kecamatan'] = $_POST['kecamatan'];
+    $userData['ibu']['kelurahan'] = $_POST['kelurahan'];
+    $userData['ibu']['kode_pos'] = $_POST['kode_pos'];
+    $userData['ibu']['pekerjaan'] = $_POST['pekerjaan'];
+    $userData['ibu']['pendidikan_terakhir'] = $_POST['pendidikan_terakhir'];
+    $userData['ibu']['penghasilan'] = $_POST['penghasilan'];
+
+    $userData['registered'] = true;
+    session(['loggedIn' => 1, 'user' => $userData]);
     return redirect('/success');
 });
 
@@ -233,25 +314,26 @@ Route::get('/berkas_ortu3', function () {
 });
 
 Route::post('/berkas_ortu3', function () {
+    $userData = session('user', []);
     // Update the 'wali' data in the $user array with the submitted form data
-    $user['wali']['name'] = $_POST['name'];
-    $user['wali']['tempatlahir'] = $_POST['tempatlahir'];
-    $user['wali']['agama'] = $_POST['agama'];
-    $user['wali']['alamat'] = $_POST['alamat'];
-    $user['wali']['rt'] = $_POST['rt'];
-    $user['wali']['rw'] = $_POST['rw'];
-    $user['wali']['no_telp'] = $_POST['no_telp'];
-    $user['wali']['provinsi'] = $_POST['provinsi'];
-    $user['wali']['kota'] = $_POST['kota'];
-    $user['wali']['kecamatan'] = $_POST['kecamatan'];
-    $user['wali']['kelurahan'] = $_POST['kelurahan'];
-    $user['wali']['kode_pos'] = $_POST['kode_pos'];
-    $user['wali']['pekerjaan'] = $_POST['pekerjaan'];
-    $user['wali']['pendidikan_terakhir'] = $_POST['pendidikan_terakhir'];
-    $user['wali']['penghasilan'] = $_POST['penghasilan'];
-    $user['registered'] = true;
-
-    session(['loggedIn' => 1, 'user' => $user]);
+    $userData['wali']['name'] = $_POST['name'];
+    $userData['wali']['tempatlahir'] = $_POST['tempatlahir'];
+    $userData['wali']['agama'] = $_POST['agama'];
+    $userData['wali']['alamat'] = $_POST['alamat'];
+    $userData['wali']['rt'] = $_POST['rt'];
+    $userData['wali']['rw'] = $_POST['rw'];
+    $userData['wali']['no_telp'] = $_POST['no_telp'];
+    $userData['wali']['provinsi'] = $_POST['provinsi'];
+    $userData['wali']['kota'] = $_POST['kota'];
+    $userData['wali']['kecamatan'] = $_POST['kecamatan'];
+    $userData['wali']['kelurahan'] = $_POST['kelurahan'];
+    $userData['wali']['kode_pos'] = $_POST['kode_pos'];
+    $userData['wali']['pekerjaan'] = $_POST['pekerjaan'];
+    $userData['wali']['pendidikan_terakhir'] = $_POST['pendidikan_terakhir'];
+    $userData['wali']['penghasilan'] = $_POST['penghasilan'];
+    $userData['wali_picked'] = true;
+    $userData['registered'] = true;
+    session(['loggedIn' => 1, 'user' => $userData]);
     return redirect('/success');
 });
 
