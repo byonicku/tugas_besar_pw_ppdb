@@ -20,78 +20,78 @@ $user = [
     'wali_picked' => false,
     'no_regis' => 0,
     'diri' => [
-        'name' => '',
-        'email' => '',
-        'tanggallahir' => '',
-        'tempatlahir' => '',
-        'agama' => '',
-        'alamat' => '',
-        'rt' => '',
-        'rw' => '',
-        'no_telp' => '',
-        'provinsi' => '',
-        'kota' => '',
-        'kecamatan' => '',
-        'kelurahan' => '',
-        'kode_pos' => '',
-        'asal_smp' => '',
-        'jurusan' => '',
-        'foto' => '',
-        'foto_dir' => '',
+        'name' => 'Placeholder',
+        'email' => 'Placeholder',
+        'tanggallahir' => 'Placeholder',
+        'tempatlahir' => 'Placeholder',
+        'agama' => 'Placeholder',
+        'alamat' => 'Placeholder',
+        'rt' => 'Placeholder',
+        'rw' => 'Placeholder',
+        'no_telp' => 'Placeholder',
+        'provinsi' => 'Placeholder',
+        'kota' => 'Placeholder',
+        'kecamatan' => 'Placeholder',
+        'kelurahan' => 'Placeholder',
+        'kode_pos' => 'Placeholder',
+        'asal_smp' => 'Placeholder',
+        'jurusan' => 'Placeholder',
+        'foto' => 'Placeholder',
+        'foto_dir' => 'Placeholder',
     ],
     'ayah' => [
-        'name' => '',
-        'email' => '',
-        'tempatlahir' => '',
-        'agama' => '',
-        'alamat' => '',
-        'rt' => '',
-        'rw' => '',
-        'no_telp' => '',
-        'provinsi' => '',
-        'kota' => '',
-        'kecamatan' => '',
-        'kelurahan' => '',
-        'kode_pos' => '',
-        'pekerjaan' => '',
-        'pendidikan_terakhir' => '',
-        'penghasilan' => '',
+        'name' => 'Placeholder',
+        'email' => 'Placeholder',
+        'tempatlahir' => 'Placeholder',
+        'agama' => 'Placeholder',
+        'alamat' => 'Placeholder',
+        'rt' => 'Placeholder',
+        'rw' => 'Placeholder',
+        'no_telp' => 'Placeholder',
+        'provinsi' => 'Placeholder',
+        'kota' => 'Placeholder',
+        'kecamatan' => 'Placeholder',
+        'kelurahan' => 'Placeholder',
+        'kode_pos' => 'Placeholder',
+        'pekerjaan' => 'Placeholder',
+        'pendidikan_terakhir' => 'Placeholder',
+        'penghasilan' => 'Placeholder',
     ],
     'ibu' => [
-        'name' => '',
-        'email' => '',
-        'tempatlahir' => '',
-        'agama' => '',
-        'alamat' => '',
-        'rt' => '',
-        'rw' => '',
-        'no_telp' => '',
-        'provinsi' => '',
-        'kota' => '',
-        'kecamatan' => '',
-        'kelurahan' => '',
-        'kode_pos' => '',
-        'pekerjaan' => '',
-        'pendidikan_terakhir' => '',
-        'penghasilan' => '',
+        'name' => 'Placeholder',
+        'email' => 'Placeholder',
+        'tempatlahir' => 'Placeholder',
+        'agama' => 'Placeholder',
+        'alamat' => 'Placeholder',
+        'rt' => 'Placeholder',
+        'rw' => 'Placeholder',
+        'no_telp' => 'Placeholder',
+        'provinsi' => 'Placeholder',
+        'kota' => 'Placeholder',
+        'kecamatan' => 'Placeholder',
+        'kelurahan' => 'Placeholder',
+        'kode_pos' => 'Placeholder',
+        'pekerjaan' => 'Placeholder',
+        'pendidikan_terakhir' => 'Placeholder',
+        'penghasilan' => 'Placeholder',
     ],
     'wali' => [
-        'name' => '',
-        'email' => '',
-        'tempatlahir' => '',
-        'agama' => '',
-        'alamat' => '',
-        'rt' => '',
-        'rw' => '',
-        'no_telp' => '',
-        'provinsi' => '',
-        'kota' => '',
-        'kecamatan' => '',
-        'kelurahan' => '',
-        'kode_pos' => '',
-        'pekerjaan' => '',
-        'pendidikan_terakhir' => '',
-        'penghasilan' => '',
+        'name' => 'Placeholder',
+        'email' => 'Placeholder',
+        'tempatlahir' => 'Placeholder',
+        'agama' => 'Placeholder',
+        'alamat' => 'Placeholder',
+        'rt' => 'Placeholder',
+        'rw' => 'Placeholder',
+        'no_telp' => 'Placeholder',
+        'provinsi' => 'Placeholder',
+        'kota' => 'Placeholder',
+        'kecamatan' => 'Placeholder',
+        'kelurahan' => 'Placeholder',
+        'kode_pos' => 'Placeholder',
+        'pekerjaan' => 'Placeholder',
+        'pendidikan_terakhir' => 'Placeholder',
+        'penghasilan' => 'Placeholder',
     ],
 ];
 
@@ -131,13 +131,13 @@ Route::get('/login', function () {
     return view('/auth/login', ['state' => $loggedIn, 'error' => '']);
 });
 
-Route::post('/login', function () use ($admin) {
+Route::post('/login', function () {
     // Check if the submitted username and password match the stored user data
     if ($_POST['username'] === session('user')['username'] && $_POST['password'] === session('user')['password']) {
         session(['loggedIn' => 1, 'user' => session('user')]);
         return redirect('/home');
-    } else if ($_POST['username'] === $admin['user'] && $_POST['password'] === $admin['pass']){
-        session(['loggedIn' => 2, 'user' => $admin]);
+    } else if ($_POST['username'] === 'admin' && $_POST['password'] === 'admin'){
+        session(['loggedIn' => 2, 'user' => session('user')]);
         return redirect('/home');
     } else {
         return view('/auth/login', ['state' => 0, 'error' => 'Invalid username or password!']);
@@ -350,4 +350,35 @@ Route::get('/success_already', function () {
 Route::get('/jurusan', function () {
     $loggedIn = session('loggedIn', 0);
     return view('/information/jurusan', ['state' => $loggedIn]);
+});
+
+Route::get('/masterdata', function() {
+    $loggedIn = session('loggedIn', 0);
+    return view('/admin/master_data', ['state' => $loggedIn]);
+});
+
+Route::get('/masterdata_ipa', function() {
+    $loggedIn = session('loggedIn', 0);
+    return view('/admin/master_data_ipa', ['state' => $loggedIn]);
+});
+
+Route::get('/masterdata_ips', function() {
+    $loggedIn = session('loggedIn', 0);
+    return view('/admin/master_data_ips', ['state' => $loggedIn]);
+});
+
+Route::get('/masterdata_bahasa', function() {
+    $loggedIn = session('loggedIn', 0);
+    return view('/admin/master_data_bahasa', ['state' => $loggedIn]);
+});
+
+Route::get('/profile_siswa', function() {
+    $loggedIn = session('loggedIn', 0);
+    return view('/admin/profile_siswa', ['state' => $loggedIn, 'user' => session('user')]);
+});
+
+
+Route::get('/pembayaran_siswa', function() {
+    $loggedIn = session('loggedIn', 0);
+    return view('/admin/pembayaran_siswa', ['state' => $loggedIn, 'user' => session('user')]);
 });

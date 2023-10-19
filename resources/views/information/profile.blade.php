@@ -22,6 +22,7 @@
             <img src="{{ asset(session('user')['diri']['foto']) }}" class="img-profile border shadow-sm">
             <div class="container my-auto mx-2">
                 <h1 class="text-left"><strong>{{ $user['diri']['name'] }}</strong></h1>
+                <h1 class="text-left" style="font-size: 24px"><strong>{{ $user['diri']['jurusan'] }}</strong></h1>
                 <h2 class="text-left">{{ $user['no_regis'] }}</h2>
             </div>
         @endif

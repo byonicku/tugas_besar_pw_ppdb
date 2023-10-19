@@ -34,10 +34,7 @@
         @else
             <!-- admin -->
             <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Data Pengguna</a>
-            </li>
-            <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Kelola Pengguna</a>
+                <a class="nav-link" href="{{ url('masterdata') }}">Master Data</a>
             </li>
         @endif
 
