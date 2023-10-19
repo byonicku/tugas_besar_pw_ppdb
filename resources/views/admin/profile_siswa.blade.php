@@ -10,7 +10,7 @@
         }
     </style>
 
-    <div class="container">
+    <div class="container pb-5">
         <div class="card">
             <div class="card-header">
                 <h3>
@@ -30,11 +30,17 @@
                             @if (!session('user')['registered'])
                                 <img src="{{ asset('images/default-avatar.jpg') }}" class="img-profile border shadow-sm">
                             @else
-                                <img src="{{ asset(session('user')['diri']['foto']) }}" class="img-profile border shadow-sm">
+                                <img src="{{ asset(session('user')['diri']['foto']) }}"
+                                    class="img-profile border shadow-sm">
                             @endif
-                            <a href="#" class="btn w-100 mx-auto mt-2" style="background-color: #FFD6A4;">
+                            <a href="#" class="btn w-100 mx-auto my-2" style="background-color: #FFD6A4;">
                                 Edit
                             </a>
+
+                            <button type="submit" class="btn shadow-sm w-100 my-2" style="background-color: #CCFFD1">Konfirmasi
+                                Berkas
+                            </button>
+
                         </div>
                         <div class="col-md-9">
                             <div class="row">
@@ -168,13 +174,15 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="rt" class="form-label"><strong>RT</strong></label>
+                                                        <label for="rt"
+                                                            class="form-label"><strong>RT</strong></label>
                                                         <p>{{ $user['wali']['rt'] }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="rw" class="form-label"><strong>RW</strong></label>
+                                                        <label for="rw"
+                                                            class="form-label"><strong>RW</strong></label>
                                                         <p>{{ $user['wali']['rw'] }}</p>
                                                     </div>
                                                 </div>

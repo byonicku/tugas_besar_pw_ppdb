@@ -32,7 +32,7 @@
         }
     </style>
 
-    <div class="container">
+    <div class="container pb-5">
         <div class="card">
             <div class="card-header">
                 <h3>
