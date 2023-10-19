@@ -25,8 +25,15 @@
         vertical-align: middle;
     }
 
-    .bayar-btn {
-        vertical-align: middle;
+    /* Responsive styles */
+    @media only screen and (max-width: 768px) {
+        .col-md-6 {
+            margin-bottom: 10px;
+        }
+        .btn {
+            width: 100%;
+            margin-bottom: 10px;
+        }
     }
 </style>
 
@@ -55,7 +62,7 @@
         </div>
         <div class="card-body">
             <div class="container">
-                <div class="row py-2">
+                <div class="row py-3">
                     <div class="col-md-6">
                         <button type="submit" class="btn shadow-sm w-50"
                                     style="background-color: #CCFFD1">Tambah Tagihan Semua</button>
@@ -67,35 +74,37 @@
                         <a href="{{ url('masterdata_ips') }}" class="btn btn-secondary">IPS</a>
                     </div>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama Pengguna</th>
-                            <th scope="col">Tanggal Daftar</th>
-                            <th scope="col">Status Pendaftaran</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Sample data rows, you can add more rows here -->
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Nama 1</td>
-                            <td>2023-10-01</td>
-                            <td>Pending</td>
-                            <td><a href="{{ url('profile_siswa') }}">Lihat Detail</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Nama 2</td>
-                            <td>2023-11-01</td>
-                            <td>Terkonfirmasi</td>
-                            <td><a href="#">Lihat Detail</a></td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Pengguna</th>
+                                <th scope="col">Tanggal Daftar</th>
+                                <th scope="col">Status Pendaftaran</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample data rows, you can add more rows here -->
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Nama 1</td>
+                                <td>2023-10-01</td>
+                                <td>Pending</td>
+                                <td><a href="{{ url('profile_siswa') }}">Lihat Detail</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Nama 2</td>
+                                <td>2023-11-01</td>
+                                <td>Terkonfirmasi</td>
+                                <td><a href="#">Lihat Detail</a></td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

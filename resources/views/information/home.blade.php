@@ -10,6 +10,12 @@
     .card:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
+
+    @media (max-width: 768px) {
+        .card {
+            height: auto;
+        }
+    }
 </style>
 
 <div class="container d-flex flex-column align-items-center text-center my-5">
@@ -24,7 +30,7 @@
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-header">
                         Bahasa
                     </div>
@@ -34,7 +40,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-header">
                         IPS
                     </div>
@@ -44,7 +50,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-header">
                         IPA
                     </div>
