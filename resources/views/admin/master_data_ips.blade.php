@@ -64,7 +64,7 @@
             <div class="container">
                 <div class="row py-3">
                     <div class="col-md-6">
-                        <button type="submit" class="btn shadow-sm w-50"
+                        <button type="submit" class="btn shadow-sm"
                                     style="background-color: #CCFFD1">Tambah Tagihan Semua</button>
                     </div>
                     <div class="col-md-6 text-end">

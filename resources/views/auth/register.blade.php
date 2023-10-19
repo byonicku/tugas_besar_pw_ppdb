@@ -98,8 +98,9 @@
             <div class="d-flex flex-column py-5">
                 <h1 style="color:#FFFFFF; font-size: 86px; max-width: 450px" class="align-self-center text-center pb-5">
                     WELCOME TO SMATMA</h1>
-                <a href="{{ url('register') }}" style="color: #FFFFFF; border: 1px solid #FFFFFF; font-size: 30px;"
-                    class="align-self-center px-4">
+                <a href="{{ url('register') }}"
+                    style="color: #FFFFFF; border: 1px solid #FFFFFF; font-size: 30px; padding: 10px"
+                    class="align-self-center px-5">
                     Register
                 </a>
             </div>
