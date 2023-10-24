@@ -47,8 +47,8 @@
                             <a href="{{ url('pembayaran_siswa') }}" class="btn btn-primary">Pembayaran</a>
                         </div>
                         <div class="col-md-6 text-end">
-                            <button type="submit" class="btn shadow-sm w-50"
-                                        style="background-color: #CCFFD1">Tambah Tagihan</button>
+                            <button type="submit" class="btn shadow-sm w-50" style="background-color: #CCFFD1">Tambah
+                                Tagihan</button>
                         </div>
                     </div>
                     <div class="row">
@@ -145,12 +145,14 @@
                         </div>
                         <div class="form-group">
                             <label for="metode_pembayaran">Metode Pembayaran</label>
-                            <input type="text" class="form-control" id="metode_pembayaran" disabled value="Transfer Bank">
+                            <input type="text" class="form-control" id="metode_pembayaran" disabled
+                                value="Transfer Bank">
                         </div>
                         <div class="form-group">
                             <label for="bukti_pembayaran">Bukti Pembayaran</label>
                             <div>
-                                <img src="https://via.placeholder.com/150x150.png?text=Bukti+Pembayaran" alt="Bukti Pembayaran">
+                                <img src="https://via.placeholder.com/150x150.png?text=Bukti+Pembayaran"
+                                    alt="Bukti Pembayaran">
                             </div>
                         </div>
                     </div>
