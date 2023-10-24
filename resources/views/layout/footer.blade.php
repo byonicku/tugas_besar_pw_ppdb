@@ -15,13 +15,15 @@
     body {
         margin: 0;
         padding: 0;
-        min-height: 100vh; /* Make sure the body takes up at least the viewport height */
+        min-height: 100vh;
+        /* Make sure the body takes up at least the viewport height */
         display: flex;
         flex-direction: column;
     }
 
     main {
-        flex-grow: 1; /* Allow the main content to grow and push the footer to the bottom */
+        flex-grow: 1;
+        /* Allow the main content to grow and push the footer to the bottom */
     }
 
     footer {
@@ -45,11 +47,15 @@
         <div class="row">
             <div class="col-md-4 mt-4">
                 <h3 class="footer-title">About</h3>
-                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam eu bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien. Sed euismod, diam eu bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien.</p>
+                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam eu bibendum
+                    bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien. Sed euismod, diam eu
+                    bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien.</p>
             </div>
             <div class="col-md-4 mt-4">
                 <h3 class="footer-title">Contact</h3>
-                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam eu bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien. Sed euismod, diam eu bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien.</p>
+                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam eu bibendum
+                    bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien. Sed euismod, diam eu
+                    bibendum bibendum, velit sapien bibendum augue, vel bibendum sapien sapien vel sapien.</p>
             </div>
             <div class="col-md-4 mb-2 mt-0">
                 <img src="{{ asset('images/logo_shield.png') }}" class="footer-logo-shield">
