@@ -6,8 +6,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h4>Step 1 of 2</h4>
-                    <h5>Data Diri</h5>
+                    <h4>Step 2 of 2</h4>
+                    <h5>Data Orang Tua</h5>
                 </div>
                 <div class="col-md-6">
                     <div class="alert alert-warning d-flex align-items-center" role="alert">
@@ -28,9 +28,10 @@
         <div class="row mt-2 mb-5">
             <div class="card w-100">
                 <div class="card-body">
-                    <form action="{{ url('berkas') }}" method="POST" enctype="multipart/form-data">
+                    <form action="@yield('ortupath')" method="POST">
                         @csrf
                         <div class="row">
+                            <h5>@yield('ortu')</h5>
                             <div class="col-md-6 border-end">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nama Lengkap</label>
@@ -44,11 +45,6 @@
                                         <option value="Laki-laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
                                     </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="tanggallahir" class="form-label">Tanggal Lahir</label>
-                                    <input type="date" class="form-control" id="tanggallahir" name="tanggallahir"
-                                        placeholder="Tanggal Lahir" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="tempatlahir" class="form-label">Tempat Lahir</label>
@@ -70,11 +66,6 @@
                                         <option value="Buddha">Buddha</option>
                                         <option value="Konghucu">Konghucu</option>
                                     </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="no_telp" class="form-label">Nomor Telepon</label>
-                                    <input type="number" class="form-control" id="no_telp" name="no_telp"
-                                        placeholder="Nomor Telepon" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="alamat" class="form-label">Alamat</label>
@@ -99,16 +90,21 @@
                             </div>
 
                             <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="provinsi" class="form-label">Provinsi</label>
-                                    <select class="form-select" id="provinsi" name="provinsi" required>
-                                        <option value="" selected disabled hidden>Provinsi</option>
-                                        @foreach($provinces as $province)
-                                            <option value="{{ $province }}">{{ $province }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <div class="row">
+                                    <div class="mb-3">
+                                        <label for="no_telp" class="form-label">Nomor Telepon</label>
+                                        <input type="number" class="form-control" id="no_telp" name="no_telp"
+                                            placeholder="Nomor Telepon" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="provinsi" class="form-label">Provinsi</label>
+                                        <select class="form-select" id="provinsi" name="provinsi" required>
+                                            <option value="" selected disabled hidden>Provinsi</option>
+                                            @foreach($provinces as $province)
+                                                <option value="{{ $province }}">{{ $province }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="kota" class="form-label">Kabupaten/Kota</label>
@@ -141,48 +137,57 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="asal_smp" class="form-label">Asal SMP</label>
-                                    <input type="text" class="form-control" id="asal_smp" name="asal_smp"
-                                        placeholder="Asal SMP" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="jurusan" class="form-label">Jurusan</label>
-                                    <select class="form-select" id="jurusan" name="jurusan" required>
-                                        <option selected hidden value="">Pilih Jurusan</option>
-                                        <option value="Bahasa">Bahasa</option>
-                                        <option value="IPS">IPS</option>
-                                        <option value="IPA">IPA</option>
+                                    <label for="pendidikan_terakhir" class="form-label">Pendidikan Terakhir</label>
+                                    <select class="form-select" id="pendidikan_terakhir" name="pendidikan_terakhir"
+                                        required>
+                                        <option selected hidden disabled value="">Pendidikan Terakhir</option>
+                                        <option value="SD">SD</option>
+                                        <option value="SLTP">SLTP</option>
+                                        <option value="SLTA">SLTA</option>
+                                        <option value="D3">D3</option>
+                                        <option value="S1">S1</option>
+                                        <option value="S2">S2</option>
+                                        <option value="S3">S3</option>
                                     </select>
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="foto" class="form-label">Upload Pas Foto</label>
-                                    <input type="file" class="form-control" id="foto" name="foto">
+                                    <label for="pekerjaan" class="form-label">Pekerjaan</label>
+                                    <select class="form-select" id="pekerjaan" name="pekerjaan" required>
+                                        <option selected hidden disabled value="">Pekerjaan</option>
+                                        <option value="PNS">Pegawai Negeri Sipil</option>
+                                        <option value="Swasta">Karyawan Swasta</option>
+                                        <option value="Wiraswasta">Wiraswasta</option>
+                                        <option value="Guru / Dosen">Guru / Dosen</option>
+                                        <option value="Dokter">Dokter</option>
+                                        <option value="Perawat">Perawat</option>
+                                        <option value="TNI/Polri">TNI/Polri</option>
+                                        <option value="Wiraswasta">Wiraswasta</option>
+                                        <option value="Pengusaha">Pengusaha</option>
+                                        <option value="Penyiar">Penyiar</option>
+                                        <option value="Polisi">Polisi</option>
+                                        <option value="Peternak">Peternak</option>
+                                        <option value="Pensiunan">Pensiunan</option>
+                                        <option value="Buruh Lepas">Buruh Lepas</option>
+                                    </select>
                                 </div>
+
                                 <div class="mb-3">
-                                    <label class="form-label">Pilih Data Orang Tua Yang Ingin Di-input</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="choose" id="chooseAyah" value="Ayah" required>
-                                        <label class="form-check-label" for="chooseAyah">
-                                            Ayah
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="choose" id="chooseIbu" value="Ibu" required>
-                                        <label class="form-check-label" for="chooseIbu">
-                                            Ibu
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="choose" id="chooseWali" value="Wali" required>
-                                        <label class="form-check-label" for="chooseWali">
-                                            Wali
-                                        </label>
-                                    </div>
+                                    <label for="penghasilan" class="form-label">Penghasilan</label>
+                                    <select class="form-select" id="penghasilan" name="penghasilan" required>
+                                        <option selected hidden disabled value="">Penghasilan</option>
+                                        <option value="< Rp. 1.000.000">< Rp. 1.000.000</option>
+                                        <option value="Rp 1.000.000 - Rp. 3.000.000">Rp 1.000.000 - Rp. 3.000.000</option>
+                                        <option value="Rp 3.000.000 - Rp. 5.000.000">Rp 3.000.000 - Rp. 5.000.000</option>
+                                        <option value="Rp 5.000.000 - Rp. 7.000.000">Rp 5.000.000 - Rp. 7.000.000</option>
+                                        <option value="> Rp 7.000.000">> Rp. 7.000.000</option>
+                                    </select>
                                 </div>
                                 <hr>
                                 <button type="submit" class="btn shadow-sm w-100"
-                                    style="background-color: #CCFFD1">Next</button>
+                                    style="background-color: #CCFFD1">Submit</button>
                             </div>
                         </div>
                     </form>

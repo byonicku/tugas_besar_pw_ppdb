@@ -13,6 +13,144 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+$cities = [
+    'Banda Aceh',
+    'Langsa',
+    'Lhokseumawe',
+    'Sabang',
+    'Subulussalam',
+    'Denpasar',
+    'Pangkalpinang',
+    'Cilegon',
+    'Serang',
+    'Tangerang Selatan',
+    'Tangerang',
+    'Bengkulu',
+    'Yogyakarta',
+    'Gorontalo',
+    'Jakarta Barat',
+    'Jakarta Pusat',
+    'Jakarta Selatan',
+    'Jakarta Timur',
+    'Jakarta Utara',
+    'Sungai Penuh',
+    'Jambi',
+    'Bandung',
+    'Bekasi',
+    'Bogor',
+    'Cimahi',
+    'Cirebon',
+    'Depok',
+    'Sukabumi',
+    'Tasikmalaya',
+    'Banjar',
+    'Magelang',
+    'Pekalongan',
+    'Salatiga',
+    'Semarang',
+    'Surakarta',
+    'Tegal',
+    'Batu',
+    'Blitar',
+    'Kediri',
+    'Madiun',
+    'Malang',
+    'Mojokerto',
+    'Pasuruan',
+    'Probolinggo',
+    'Surabaya',
+    'Pontianak',
+    'Singkawang',
+    'Banjarbaru',
+    'Banjarmasin',
+    'Palangka Raya',
+    'Balikpapan',
+    'Bontang',
+    'Samarinda',
+    'Nusantara',
+    'Tarakan',
+    'Batam',
+    'Tanjungpinang',
+    'Bandar Lampung',
+    'Metro',
+    'Ternate',
+    'Tidore Kepulauan',
+    'Ambon',
+    'Tual',
+    'Bima',
+    'Mataram',
+    'Kupang',
+    'Sorong',
+    'Jayapura',
+    'Dumai',
+    'Pekanbaru',
+    'Makassar',
+    'Palopo',
+    'Parepare',
+    'Palu',
+    'Baubau',
+    'Kendari',
+    'Bitung',
+    'Kotamobagu',
+    'Manado',
+    'Tomohon',
+    'Bukittinggi',
+    'Padang',
+    'Padang Panjang',
+    'Pariaman',
+    'Payakumbuh',
+    'Sawahlunto',
+    'Solok',
+    'Lubuklinggau',
+    'Pagar Alam',
+    'Palembang',
+    'Prabumulih',
+    'Binjai',
+    'Gunungsitoli',
+    'Medan',
+    'Padangsidimpuan',
+    'Pematangsiantar',
+    'Sibolga',
+    'Tanjungbalai',
+    'Tebing Tinggi',
+];
+
+$provinces = [
+    'Aceh',
+    'Bali',
+    'Bangka Belitung',
+    'Banten',
+    'Bengkulu',
+    'Daerah Istimewa Yogyakarta',
+    'Gorontalo',
+    'Jakarta',
+    'Jambi',
+    'Jawa Barat',
+    'Jawa Tengah',
+    'Jawa Timur',
+    'Kalimantan Barat',
+    'Kalimantan Selatan',
+    'Kalimantan Tengah',
+    'Kalimantan Timur',
+    'Kalimantan Utara',
+    'Kepulauan Riau',
+    'Lampung',
+    'Maluku Utara',
+    'Maluku',
+    'Nusa Tenggara Barat',
+    'Nusa Tenggara Timur',
+    'Papua Barat Daya',
+    'Papua',
+    'Riau',
+    'Sulawesi Selatan',
+    'Sulawesi Tengah',
+    'Sulawesi Tenggara',
+    'Sulawesi Utara',
+    'Sumatera Barat',
+    'Sumatera Selatan',
+    'Sumatera Utara',
+];
+
 $user = [
     'username' => '',
     'password' => '',
@@ -185,7 +323,7 @@ Route::get('/pembayaran', function () {
     return view('/transaction/pembayaran', ['state' => $loggedIn]);
 });
 
-Route::get('/berkas', function () {
+Route::get('/berkas', function () use ($cities, $provinces) {
     $loggedIn = session('loggedIn', 0);
     if (!session('loggedIn', 1)) {
         return redirect('/');
@@ -193,7 +331,7 @@ Route::get('/berkas', function () {
     if (session('user')['registered']) {
         return redirect('/success_already');
     }
-    return view('/input/input_data_diri', ['state' => $loggedIn]);
+    return view('/input/input_data_diri', ['state' => $loggedIn, 'cities' => $cities, 'provinces' => $provinces]);
 });
 
 Route::post('/berkas', function () use (&$user) {
@@ -250,9 +388,9 @@ Route::post('/berkas', function () use (&$user) {
     }
 });
 
-Route::get('/berkas_ortu1', function () {
+Route::get('/berkas_ortu1', function () use ($cities, $provinces) {
     $loggedIn = session('loggedIn', 0);
-    return view('/input/input_data_ayah', ['state' => $loggedIn]);
+    return view('/input/input_data_ayah', ['state' => $loggedIn, 'cities' => $cities, 'provinces' => $provinces]);
 });
 
 Route::post('/berkas_ortu1', function () {
@@ -279,9 +417,9 @@ Route::post('/berkas_ortu1', function () {
     return redirect('/success');
 });
 
-Route::get('/berkas_ortu2', function () {
+Route::get('/berkas_ortu2', function () use ($cities, $provinces) {
     $loggedIn = session('loggedIn', 0);
-    return view('/input/input_data_ibu', ['state' => $loggedIn]);
+    return view('/input/input_data_ibu', ['state' => $loggedIn, 'cities' => $cities, 'provinces' => $provinces]);
 });
 
 Route::post('/berkas_ortu2', function () {
@@ -308,9 +446,9 @@ Route::post('/berkas_ortu2', function () {
     return redirect('/success');
 });
 
-Route::get('/berkas_ortu3', function () {
+Route::get('/berkas_ortu3', function () use ($cities, $provinces) {
     $loggedIn = session('loggedIn', 0);
-    return view('/input/input_data_wali', ['state' => $loggedIn]);
+    return view('/input/input_data_wali', ['state' => $loggedIn, 'cities' => $cities, 'provinces' => $provinces]);
 });
 
 Route::post('/berkas_ortu3', function () {
