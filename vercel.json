@@ -1,15 +1,16 @@
 {
     "version": 2,
+    "public": "public",
     "functions": {
         "api/*.php": { "runtime": "vercel-php@0.7.1" }
     },
-    "routes": [{
-        "src": "/(css|js)/(.*)$",
-        "dest": "/api/assets.php?type=$1&file=$2"
-    },{
-        "src": "/(.*)",
-        "dest": "/api/index.php"
-    }],
+    "rewrites": [
+        { "source": "/js/(.*)", "destination": "/public/js/$1" },
+        { "source": "/css/(.*)", "destination": "/public/css/$1" },
+        { "source": "/images/(.*)", "destination": "/public/images/$1" },
+        { "source": "/(.*)", "destination": "/api/index.php" }
+    ],
+
     "env": {
         "APP_NAME" : "PPDB SMATMA",
         "APP_ENV": "production",
