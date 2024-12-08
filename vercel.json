@@ -3,11 +3,6 @@
     "functions": {
         "api/*.php": { "runtime": "vercel-php@0.7.1" }
     },
-    "rewrites": [
-        { "source": "/js/(.*)", "destination": "/public/js/$1" },
-        { "source": "/css/(.*)", "destination": "/public/css/$1" },
-        { "source": "/images/(.*)", "destination": "/public/images/$1" }
-    ],
     "routes": [{
         "src": "/(.*)",
         "dest": "/api/index.php"
